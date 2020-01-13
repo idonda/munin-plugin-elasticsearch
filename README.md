@@ -5,7 +5,7 @@ This original codes has out of maintenance, so I have started maintenance this p
 
 ## Features
 
-* Supports elasticsearch 1.0.x / 1.1.x / 1.2.x / 1.3.x / 1.4.x / 2.x / 5.x
+* Supports elasticsearch 1.0.x / 1.1.x / 1.2.x / 1.3.x / 1.4.x / 2.x / 5.x / 6.x / 7.x
 * Supports monitoring local and/or another hosts
 
 ## Plugins
@@ -61,6 +61,34 @@ $ sudo ln -s /usr/share/munin/plugins/elasticsearch_* /etc/munin/plugins/
 $ sudo -H munin-node-configure --shell | grep elasticsearch | sudo -H sh
 $ munin-node-configure | grep elasticsearch
 $ sudo service munin-node restart
+```
+
+```sh
+# For ubuntu 18
+apt install -y libwww-perl libjson-perl
+cd /usr/share/munin/plugins/
+wget https://raw.github.com/y-ken/munin-plugin-elasticsearch/master/elasticsearch_cache
+wget https://raw.github.com/y-ken/munin-plugin-elasticsearch/master/elasticsearch_cluster_shards
+wget https://raw.github.com/y-ken/munin-plugin-elasticsearch/master/elasticsearch_docs
+wget https://raw.github.com/y-ken/munin-plugin-elasticsearch/master/elasticsearch_gc_time
+wget https://raw.github.com/y-ken/munin-plugin-elasticsearch/master/elasticsearch_index_size
+wget https://raw.github.com/y-ken/munin-plugin-elasticsearch/master/elasticsearch_index_total
+wget https://raw.github.com/y-ken/munin-plugin-elasticsearch/master/elasticsearch_jvm_memory
+wget https://raw.github.com/y-ken/munin-plugin-elasticsearch/master/elasticsearch_jvm_pools_size
+wget https://raw.github.com/y-ken/munin-plugin-elasticsearch/master/elasticsearch_jvm_threads
+wget https://raw.github.com/y-ken/munin-plugin-elasticsearch/master/elasticsearch_open_files
+cd /etc/munin/plugins/
+ln -s /usr/share/munin/plugins/elasticsearch_cache
+ln -s /usr/share/munin/plugins/elasticsearch_cluster_shards
+ln -s /usr/share/munin/plugins/elasticsearch_docs
+ln -s /usr/share/munin/plugins/elasticsearch_gc_time
+ln -s /usr/share/munin/plugins/elasticsearch_index_size
+ln -s /usr/share/munin/plugins/elasticsearch_index_total
+ln -s /usr/share/munin/plugins/elasticsearch_jvm_memory
+ln -s /usr/share/munin/plugins/elasticsearch_jvm_pools_size
+ln -s /usr/share/munin/plugins/elasticsearch_jvm_threads
+ln -s /usr/share/munin/plugins/elasticsearch_open_files
+service munin-node restart
 ```
 
 To confirm wokring fine or not, you can check like below.
